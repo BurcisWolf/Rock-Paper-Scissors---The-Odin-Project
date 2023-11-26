@@ -2,6 +2,7 @@ let computer = "";
 let player = "";
 let computerScore = 0;
 let playerScore = 0;
+let roundCounter = 0;
 
 function getComputerChoice() {
     let num = Math.floor(Math.random() * 3);
@@ -23,32 +24,44 @@ function playRound(playerSelection, computerSelection){
             console.log("Wrong input, You have to start all over again. Score reseted!");
         return
     } */
-    console.log("Computer: " + computerSelection);
-    console.log("Player: " + playerSelection);
+    console.log("Computer choice " + computerSelection + " || Players choice " + playerSelection);
     if(playerSelection == computerSelection){
         return console.log("You tied!");
     } else if(playerSelection == "rock" && computerSelection == "paper"){
-        return console.log("You lost, " + computerSelection + " wraps " + playerSelection);
+        console.log("You lost, " + computerSelection + " wraps " + playerSelection);
+        computerScore++;
+        return 
     } else if(playerSelection == "rock" && computerSelection == "scissors"){
-        return console.log("You won, " + playerSelection + " beats " + computerSelection);
+        console.log("You won, " + playerSelection + " beats " + computerSelection);
+        playerScore++;
+        return 
     }  else if(playerSelection == "scissors" && computerSelection == "rock"){
-        return console.log("You lost, " + computerSelection + " beats " + playerSelection);
+        console.log("You lost, " + computerSelection + " beats " + playerSelection);
+        computerScore++;
+        return 
     } else if(playerSelection == "scissors" && computerSelection == "paper"){
-        return console.log("You won, " + playerSelection + " cuts " + computerSelection);
+        console.log("You won, " + playerSelection + " cuts " + computerSelection);
+        playerScore++;
+        return 
     } else if(playerSelection == "paper" && computerSelection == "rock"){
-        return console.log("You won, " + playerSelection + " wraps " + computerSelection);
+        console.log("You won, " + playerSelection + " wraps " + computerSelection);
+        playerScore++;
+        return 
     } else if(playerSelection == "paper" && computerSelection == "scissors"){
-        return console.log("You lost, " + computerSelection + " cuts " + playerSelection);
+        console.log("You lost, " + computerSelection + " cuts " + playerSelection);
+        computerScore++;
+        return 
     }
 }
 
 function game(){
-    console("---- Game starts ----");
+    console.log("---- Game starts ----");
     for (i = 0; i < 5; i++) {
         let player = prompt("Rock / Paper / Scissors", "").toLowerCase();
-        console.log(player);
+        roundCounter++;
+        console.log("**** Round number " + roundCounter + " ****");
         playRound(player, getComputerChoice());
-        console.log("Round : " +i);
+        console.log("Score: Player " + playerScore + " || Computer " + computerScore);
     }
 }
 
