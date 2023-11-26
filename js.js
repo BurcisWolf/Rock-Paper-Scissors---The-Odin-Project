@@ -17,13 +17,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection){
-    /* if(playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors"){
-            console.log(playerSelection);
-            computerScore = 0;
-            playerScore = 0;
-            console.log("Wrong input, You have to start all over again. Score reseted!");
-        return
-    } */
     console.log("Computer choice " + computerSelection + " || Players choice " + playerSelection);
     if(playerSelection == computerSelection){
         return console.log("You tied!");
@@ -54,6 +47,22 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+function whoWon(player, computer){
+    if(player == computer){
+        console.log("***************** Game Result *****************");
+        console.log("* You tied with computer, good luck next time *");
+        console.log("***********************************************");
+    } else if(player > computer) {
+        console.log("***************** Game Result *****************");
+        console.log("*  You won against a computer, you are great  *");
+        console.log("***********************************************");
+    } else {
+        console.log("***************** Game Result *****************");
+        console.log("*    You lost, better luck next time cowboy   *");
+        console.log("***********************************************");
+    }
+}
+
 function game(){
     console.log("---- Game starts ----");
     for (i = 0; i < 5; i++) {
@@ -63,6 +72,7 @@ function game(){
         playRound(player, getComputerChoice());
         console.log("Score: Player " + playerScore + " || Computer " + computerScore);
     }
+    whoWon(playerScore, computerScore);
 }
 
 game();
