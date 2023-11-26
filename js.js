@@ -1,5 +1,7 @@
 let computer = "";
-let player = "scissors";
+let player = "";
+let computerScore = 0;
+let playerScore = 0;
 
 function getComputerChoice() {
     let num = Math.floor(Math.random() * 3);
@@ -14,9 +16,14 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection){
-    computerSelection = getComputerChoice();
+    /* if(playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors"){
+            console.log(playerSelection);
+            computerScore = 0;
+            playerScore = 0;
+            console.log("Wrong input, You have to start all over again. Score reseted!");
+        return
+    } */
     console.log("Computer: " + computerSelection);
-    playerSelection = player;
     console.log("Player: " + playerSelection);
     if(playerSelection == computerSelection){
         return console.log("You tied!");
@@ -35,4 +42,14 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-playRound();
+function game(){
+    console("---- Game starts ----");
+    for (i = 0; i < 5; i++) {
+        let player = prompt("Rock / Paper / Scissors", "").toLowerCase();
+        console.log(player);
+        playRound(player, getComputerChoice());
+        console.log("Round : " +i);
+    }
+}
+
+game();
